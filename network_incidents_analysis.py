@@ -6,14 +6,16 @@ import csv
 with open("network_incidents.csv", encoding="utf-8") as f:
     incidents = list(csv.DictReader(f))
 
-### Task 2: Visa företagsnamn och analysperiod från datan ###
+### Task 2: Visa kontorsnamn och analysperiod från datan ###
 
-# Extraherar företagsnamnet från första ticket_id
-company_name = incidents[0]["ticket_id"].split("-")[0]
-# Skapar en lista över alla veckonummer
+# Hämta alla sites och veckonummer
+sites = sorted(set(row["site"] for row in incidents))
 weeks = [int(row["week_number"]) for row in incidents]
-# Skriver ut företagsnamn och analysperiod
-print(f"Company name: {company_name}")
+
+print("Offices:")
+for site in sites:
+    print(f"- {site}")
+
 print("-------------------------------------------------------------------------------------------------")
 print(f"Analysis period: Week {min(weeks)} - {max(weeks)}")
 
