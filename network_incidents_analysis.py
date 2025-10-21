@@ -2,7 +2,7 @@
 ### Task 1: Läs in CSV-filen med csv.DictReader ###
 import csv
 
-# Öppnar CSV-filen och läser in varje rad som en ordbok (dict)
+# Öppnar CSV-filen och läser in varje rad 
 with open("network_incidents.csv", encoding="utf-8") as f:
     incidents = list(csv.DictReader(f))
 
@@ -126,7 +126,7 @@ from collections import defaultdict
 # Skapar en struktur för att samla data per kategori
 category_data = defaultdict(lambda: {"count": 0, "impact_scores": []})
 
-# Hämtar och konverterar impact score till float (hanterar svenska kommatecken)
+# Hämtar och konverterar impact score till float
 for row in incidents:
     category = row["category"]
     try:
